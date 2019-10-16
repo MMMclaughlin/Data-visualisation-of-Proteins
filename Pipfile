@@ -6,6 +6,6 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-
+ biopython ="*"
 [requires]
 python_version = "3.7"
