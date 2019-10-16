@@ -1,16 +1,13 @@
 import argparse
-import gzip
-import time
-from Bio import SeqIO
+from . import parsing
 
+LOC="uniprot_receptor.xml.gz"#this is thr file name/location
 def dump(args):
-    handle = gzip.open("uniprot_receptor.xml.gz")
-    for record in SeqIO.parse(handle,"uniprot-xml"):
+    for record in parsing.uniprot_seqrecords(LOC):
         print(record)
 
 def names(args):
-    handle=gzip.open("uniprot_receptor.xml.gz")
-    for record in SeqIO.parse(handle, "uniprot-xml"):
+    for record in parsing.uniprot_seqrecords(LOC):
         print(record.name)
 def cli():
     parser = argparse.ArgumentParser(prog="uniplot")
