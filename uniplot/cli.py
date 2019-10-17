@@ -11,6 +11,7 @@ def names(args):
     for record in parsing.uniprot_seqrecords(LOC):
         print(record.name)
 def average(args):
+    print("hello world")
     print("Average Length is {}".format(
         analysis.average_len(parsing.uniprot_seqrecords(LOC))))
 def cli():
