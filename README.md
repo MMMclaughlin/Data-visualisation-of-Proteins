@@ -8,7 +8,7 @@ This package allows analysis and display of proteins from Uniprot.
 The Bio module  
 The Argparse module  
 The uniprot_receptor.xml.gz
-
+The Gzip module
 
 -----The Project------
 
