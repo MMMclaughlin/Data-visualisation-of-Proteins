@@ -15,8 +15,5 @@ def average_len_taxa(records,depth):
         try:
             record_by_taxa.setdefault(taxa[depth], []).append(r)
         except IndexError:
-            print(taxa)
-            record_by_taxa.setdefault(taxa[len(taxa)-1], []).append(r)
-
-
+            pass
     return {taxa:average_len(record) for (taxa, record) in record_by_taxa.items()}

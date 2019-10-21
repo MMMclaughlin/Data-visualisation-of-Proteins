@@ -45,7 +45,7 @@ def cli():
     subparsers.add_parser("list").set_defaults(func=names)
     subparsers.add_parser("average").set_defaults(func=average)
     subparsers.add_parser("average_len_taxa").set_defaults(func=plot_average_by_taxa)
-    parser.add_argument("--file", help="change file location")
+    parser.add_argument("--file", help="change file location",default="uniprot_receptor.xml.gz")
     parser.add_argument("--depth", help="increase plotted depth",default=1)
     args = parser.parse_args()
     if args.file:
@@ -55,6 +55,7 @@ def cli():
         else:
             print("file not found exiting")
             exit()
+    #H:\practical-2\uniprot_receptor.xml.gz
 
     #parse the command line
 
