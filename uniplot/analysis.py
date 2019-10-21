@@ -5,10 +5,18 @@ def average_len(record):#function to find average protein length
     average=totallength/len(record)#creates average of total/quantity
     return average
 
-def average_len_taxa(records):
+def average_len_taxa(records,depth):
     #calculates the average length for the top level taxa
     record_by_taxa = {}
+    print(depth)
+    depth=int(depth)-1
     for r in records:
-        taxa = r.annotations["taxonomy"][0]
-        record_by_taxa.setdefault(taxa, []).append(r)
+        taxa = r.annotations["taxonomy"]
+        try:
+            record_by_taxa.setdefault(taxa[depth], []).append(r)
+        except IndexError:
+            print(taxa)
+            record_by_taxa.setdefault(taxa[len(taxa)-1], []).append(r)
+
+
     return {taxa:average_len(record) for (taxa, record) in record_by_taxa.items()}
