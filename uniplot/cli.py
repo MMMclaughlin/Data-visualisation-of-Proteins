@@ -6,31 +6,39 @@ import os
 
   # this is thr file name/location
 
+def plot_average_by_taxa_piechart(args):
+    LOC=args.file
+    depth=args.depth
+    av = analysis.average_len_taxa(parsing.uniprot_seqrecords(LOC),depth)#gets average data
+    plot.plot_piechart_show(av)
 
 def plot_average_by_taxa(args):
-    LOC = args.file
     """makes a graph of the  most common taxas."""
+    LOC = args.file
     depth=args.depth
     print(depth)
     av = analysis.average_len_taxa(parsing.uniprot_seqrecords(LOC),depth)
     plot.plot_bar_show(av)
 
 def dump(args):
-    LOC = args.file
     """ Itterates through given file -> outputs all information."""
+    LOC = args.file
+
     print("dump")
     for record in parsing.uniprot_seqrecords(LOC):
         print(record)
 
 def names(args):
-    LOC = args.file
     """ Takes Protein file and outputs all information but the names of the proteins. """
+    LOC = args.file
+
     print("names")
     for record in parsing.uniprot_seqrecords(LOC):
         print(record.name)
 def average(args):
-    LOC=args.file
     """Takes protein file and findds the average length of the proteins in the set."""
+    LOC=args.file
+
     print("hello world")
     print("Average Length is {}".format(
         analysis.average_len(parsing.uniprot_seqrecords(LOC))))
@@ -45,6 +53,7 @@ def cli():
     subparsers.add_parser("list").set_defaults(func=names)
     subparsers.add_parser("average").set_defaults(func=average)
     subparsers.add_parser("average_len_taxa").set_defaults(func=plot_average_by_taxa)
+    subparsers.add_parser("average_len_taxa_piechart").set_defaults(func=plot_average_by_taxa_piechart)
     parser.add_argument("--file", help="change file location",default="uniprot_receptor.xml.gz")
     parser.add_argument("--depth", help="increase plotted depth",default=1)
     args = parser.parse_args()
