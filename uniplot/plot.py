@@ -5,12 +5,6 @@ def plot_bar_show(d):
     r = range(0, len(d))#this loops the amount of bars we will need to make
     ## Prepare a figure
     plt.figure()
-    print(d)
-    print(d.values())
-    print(d.keys())
-    for key in d.keys():
-        print(key)
-    print(list(d.keys()))
     ## Add bars, one at each y position, with the values of d
     plt.barh(r, d.values(),align='edge')
     ## Add labels to the y-axis, with the keys of d
@@ -25,12 +19,9 @@ def plot_piechart_show(d):
         sum=sum+value
     for value in d.values():
         newlist.append(value/sum)
-    tags=list(d.keys())
-    sizes = list(d.values())
     fig1, ax1 = plt.subplots()
-    print(list(d.keys()))
     ax1.pie(newlist, labels=(list(d.keys())),
-            shadow=True, startangle=90, autopct='%1.1f%%')
+            shadow=False, startangle=90, autopct='%1.1f%%')
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
     plt.show()

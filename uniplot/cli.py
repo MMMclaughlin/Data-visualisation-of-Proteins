@@ -30,8 +30,8 @@ def dump(args):
 
 def names(args):
     """ Takes Protein file and outputs all information but the names of the proteins. """
+    print(args)
     LOC = args.file
-
     print("names")
     for record in parsing.uniprot_seqrecords(LOC):
         print(record.name)
@@ -56,18 +56,16 @@ def cli():
     subparsers.add_parser("average_len_taxa_piechart").set_defaults(func=plot_average_by_taxa_piechart)
     parser.add_argument("--file", help="change file location",default="uniprot_receptor.xml.gz")
     parser.add_argument("--depth", help="increase plotted depth",default=1)
-    args = parser.parse_args()
-    if args.file:
-        print(args.file)
-        if os.path.exists(args.file):
-            print("file found")
-        else:
-            print("file not found exiting")
-            exit()
+    values = parser.parse_args()
+    print(values)
+    print(values.depth)
+    if os.path.exists(values.file):
+        print("file found")
+    else:
+        print("file not found exiting")
+        exit()
     #H:\practical-2\uniprot_receptor.xml.gz
 
     #parse the command line
-
-    args = parser.parse_args()
-    args.func(args)
+    values.func(values)
 
