@@ -2,7 +2,7 @@ import gzip
 from Bio import SeqIO
 
 def uniprot_seqrecords(file_location):
-    """ takes location of a protein file and deoompresses it then returns a list of all proteins in the file."""
+    ''' takes location of a protein file and deoompresses it then returns a list of all proteins in the file.'''
     records=[]#store the data from the file in a list
 
     handle= gzip.open(file_location)#open file of data

@@ -44,13 +44,13 @@ def cli():
 
     subparsers = parser.add_subparsers(help="Sub Command Help")
     #sub parsers
-    subparsers.add_parser("dump").set_defaults(func=dump)
-    subparsers.add_parser("list").set_defaults(func=names)
-    subparsers.add_parser("average").set_defaults(func=average)
-    subparsers.add_parser("average_len_taxa").set_defaults(func=plot_average_by_taxa)
-    subparsers.add_parser("average_len_taxa_piechart").set_defaults(func=plot_average_by_taxa_piechart)
-    parser.add_argument("--file", help="change file location",default="uniprot_receptor.xml.gz")
-    parser.add_argument("--depth", help="increase plotted depth",default=1)
+    subparsers.add_parser("dump",help="this dumps all information from a protean file").set_defaults(func=dump)
+    subparsers.add_parser("list",help="this lists all the names of the proteans").set_defaults(func=names)
+    subparsers.add_parser("average",help="this calculates the average length of all the proteans in a given file").set_defaults(func=average)
+    subparsers.add_parser("average_len_taxa",help="this plots a bar graph").set_defaults(func=plot_average_by_taxa)
+    subparsers.add_parser("average_len_taxa_piechart",help="this option plots a pie graph").set_defaults(func=plot_average_by_taxa_piechart)
+    parser.add_argument("--file", help="change file location (file location string)",default="uniprot_receptor.xml.gz")
+    parser.add_argument("--depth", help="increase plotted depth (integer)",default=1)
     #parsers the command line
     args = parser.parse_args()
     #validates that the given file exists
