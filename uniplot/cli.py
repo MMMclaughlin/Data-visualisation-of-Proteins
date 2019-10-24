@@ -4,9 +4,8 @@ from . import analysis
 from . import plot
 import os
 
-  # this is thr file name/location
-
 def plot_average_by_taxa_piechart(args):
+    """"is called in arguments and outputs a piechart"""
     LOC=args.file
     depth=args.depth
     av = analysis.average_len_taxa(parsing.uniprot_seqrecords(LOC),depth)#gets average data
@@ -23,7 +22,6 @@ def plot_average_by_taxa(args):
 def dump(args):
     """ Itterates through given file -> outputs all information."""
     LOC = args.file
-
     print("dump")
     for record in parsing.uniprot_seqrecords(LOC):
         print(record)
@@ -38,12 +36,9 @@ def names(args):
 def average(args):
     """Takes protein file and findds the average length of the proteins in the set."""
     LOC=args.file
-
-    print("hello world")
     print("Average Length is {}".format(
         analysis.average_len(parsing.uniprot_seqrecords(LOC))))
 def cli():
-
     """command line interface called by uniplot, takes given argument and calls the paired function."""
     parser = argparse.ArgumentParser(prog="uniplot")
 
@@ -56,16 +51,14 @@ def cli():
     subparsers.add_parser("average_len_taxa_piechart").set_defaults(func=plot_average_by_taxa_piechart)
     parser.add_argument("--file", help="change file location",default="uniprot_receptor.xml.gz")
     parser.add_argument("--depth", help="increase plotted depth",default=1)
-    values = parser.parse_args()
-    print(values)
-    print(values.depth)
-    if os.path.exists(values.file):
+    #parsers the command line
+    args = parser.parse_args()
+    #validates that the given file exists
+    if os.path.exists(args.file):
         print("file found")
+        print(args.file)
     else:
         print("file not found exiting")
         exit()
-    #H:\practical-2\uniprot_receptor.xml.gz
-
-    #parse the command line
-    values.func(values)
+    args.func(args)
 
