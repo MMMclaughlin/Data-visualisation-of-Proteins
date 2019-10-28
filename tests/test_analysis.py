@@ -16,7 +16,7 @@ def test_average():
         records.append(len(i[1]))#add all the lengths to a list
 
     assert uniplot.analysis.average_len(records)
-    ) == 302.72222222222223
+    ==302.72222222222223
 
 
 
